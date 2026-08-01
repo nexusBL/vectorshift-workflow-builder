@@ -1,39 +1,45 @@
-# VectorShift Workflow Builder
+# 🚀 VectorShift Workflow Builder
 
-A workflow builder built as part of the VectorShift Frontend Technical Assessment.
+A drag-and-drop workflow builder developed as part of the **VectorShift Frontend Technical Assessment**.
 
-## Features
-
-- Reusable BaseNode component
-- Drag-and-drop workflow builder using React Flow
-- Dynamic Text Node with variable parsing
-- Auto-resizing Text Node
-- Dynamic input handles generated from `{{variable}}`
-- Backend workflow parsing with FastAPI
-- DAG (Directed Acyclic Graph) detection using Kahn's Algorithm
-- Pipeline analysis (Nodes, Edges, DAG)
+The application allows users to visually build pipelines, dynamically generate node inputs from text variables, and analyze workflows using a FastAPI backend.
 
 ---
 
-## Tech Stack
+# ✨ Features
 
-### Frontend
+- Reusable **BaseNode** abstraction
+- 9 workflow node types
+- Drag-and-drop workflow editor using React Flow
+- Dynamic Text Node supporting `{{variable}}` syntax
+- Automatic input handle generation
+- Auto-resizing Text Node
+- FastAPI backend integration
+- Pipeline analysis
+- DAG (Directed Acyclic Graph) detection using **Kahn's Algorithm**
+- Responsive and reusable component architecture
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
 
 - React
 - React Flow
 - Zustand
 - Axios
 
-### Backend
+## Backend
 
 - FastAPI
 - Python
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
-```
+```text
 vectorshift-workflow-builder/
 │
 ├── backend/
@@ -52,9 +58,60 @@ vectorshift-workflow-builder/
 
 ---
 
-## Installation
+# 🏗 Architecture
 
-### Backend
+```text
+                React
+                  │
+                  ▼
+            React Flow
+                  │
+                  ▼
+               Zustand
+                  │
+                  ▼
+                Axios
+                  │
+                  ▼
+        FastAPI Backend
+                  │
+                  ▼
+         Pipeline Analysis
+                  │
+      ┌───────────┼───────────┐
+      │           │           │
+      ▼           ▼           ▼
+ Node Count   Edge Count   DAG Detection
+```
+
+---
+
+# 🧠 Algorithm Used
+
+Pipeline cycle detection is implemented using **Kahn's Algorithm (Topological Sorting)**.
+
+### Time Complexity
+
+```
+O(V + E)
+```
+
+### Space Complexity
+
+```
+O(V + E)
+```
+
+where
+
+- **V** = Number of Nodes
+- **E** = Number of Edges
+
+---
+
+# ⚙ Installation
+
+## Backend
 
 ```bash
 cd backend
@@ -62,7 +119,7 @@ pip install fastapi uvicorn python-multipart
 uvicorn main:app --reload
 ```
 
-Runs on
+Runs on:
 
 ```
 http://127.0.0.1:8000
@@ -70,7 +127,7 @@ http://127.0.0.1:8000
 
 ---
 
-### Frontend
+## Frontend
 
 ```bash
 cd frontend
@@ -78,7 +135,7 @@ npm install
 npm start
 ```
 
-Runs on
+Runs on:
 
 ```
 http://localhost:3000
@@ -86,31 +143,31 @@ http://localhost:3000
 
 ---
 
-## Screenshots
+# 📸 Screenshots
 
-### Workflow Builder
+## Workflow Builder
 
 ![Workflow Builder](photo/1.png)
 
 ---
 
-### Pipeline Analysis
+## Pipeline Analysis
 
 ![Pipeline Analysis](photo/2.png)
 
 ---
 
-## Dynamic Text Node
+# 🔤 Dynamic Text Node
 
-Supports variables using
+The Text Node supports variables using the syntax
 
-```
+```text
 {{variable}}
 ```
 
 Example
 
-```
+```text
 Hello {{name}}
 
 Welcome {{company}}
@@ -118,32 +175,39 @@ Welcome {{company}}
 Email {{email}}
 ```
 
-Each variable automatically generates an input handle.
+Each detected variable automatically creates an input handle on the left side of the node.
 
 ---
 
-## Backend Analysis
+# 📊 Backend Analysis
 
-The backend computes
+When the user clicks **Submit Pipeline**, the frontend sends the workflow graph to the FastAPI backend.
+
+The backend calculates:
 
 - Number of Nodes
 - Number of Edges
-- DAG Detection
-
-using Kahn's Algorithm.
+- Whether the graph is a DAG
 
 Example response
 
 ```json
 {
-    "num_nodes": 3,
-    "num_edges": 2,
-    "is_dag": true
+  "num_nodes": 3,
+  "num_edges": 2,
+  "is_dag": true
 }
 ```
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-Bharath L
+**Bharath L**
+
+MIT License
+
+Copyright (c) 2026 Bharath L
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files...
